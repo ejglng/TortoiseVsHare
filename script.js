@@ -2,11 +2,13 @@ const TRACK_LENGTH = 70
 const startBtn = document.getElementById(`startBtn`)
 const messageEl = document.getElementById(`message`)
 const trackEl = document.getElementById(`track`)
+const logListEl = document.getElementById(`logList`)   // new
 
 let tortoisePosition = 1
 let harePosition = 1
 let raceIntervalId = null
 let stepCount = 0
+let gameLog = []   // new
 
 startBtn.addEventListener("click", startRace)
 
@@ -21,6 +23,8 @@ function startRace(){
     tortoisePosition = 1
     harePosition = 1
     stepCount = 0
+    gameLog = []     // new
+    renderLog()      // new
 
     raceIntervalId = setInterval(raceStep, 1000)
 }
@@ -31,6 +35,7 @@ function raceStep(){
     moveHare()
     clampPosition()
     renderTrack()
+    renderLog()      // new
 
     if (tortoisePosition >= TRACK_LENGTH || harePosition >= TRACK_LENGTH){
         clearInterval(raceIntervalId)
@@ -95,6 +100,20 @@ function renderTrack(){
         }
         trackEl.appendChild(cell)
     }
+}
+
+// new function
+function renderLog(){
+    logListEl.innerHTML = ``
+
+    for (let i = 0; i < gameLog.length; i++){
+        let li = document.createElement(`li`)
+        li.classList.add(`entry`)
+        li.textContent = gameLog[i]
+        logListEl.appendChild(li)
+    }
+
+    logListEl.parentElement.scrollTop = logListEl.parentElement.scrollHeight
 }
 
 function showResult(){
