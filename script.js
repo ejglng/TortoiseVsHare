@@ -2,13 +2,13 @@ const TRACK_LENGTH = 70
 const startBtn = document.getElementById(`startBtn`)
 const messageEl = document.getElementById(`message`)
 const trackEl = document.getElementById(`track`)
-const logListEl = document.getElementById(`logList`)   // new
+const logListEl = document.getElementById(`logList`)
 
 let tortoisePosition = 1
 let harePosition = 1
 let raceIntervalId = null
 let stepCount = 0
-let gameLog = []   // new
+let gameLog = []
 
 startBtn.addEventListener("click", startRace)
 
@@ -23,8 +23,8 @@ function startRace(){
     tortoisePosition = 1
     harePosition = 1
     stepCount = 0
-    gameLog = []     // new
-    renderLog()      // new
+    gameLog = []
+    renderLog()
 
     raceIntervalId = setInterval(raceStep, 1000)
 }
@@ -35,7 +35,7 @@ function raceStep(){
     moveHare()
     clampPosition()
     renderTrack()
-    renderLog()      // new
+    renderLog()
 
     if (tortoisePosition >= TRACK_LENGTH || harePosition >= TRACK_LENGTH){
         clearInterval(raceIntervalId)
