@@ -1,0 +1,108 @@
+body {
+	background-color: #fdf3d7;
+	font-family: 'Segoe UI', sans-serif;
+	margin: 0;
+	padding: 20px;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 0.5rem;
+}
+
+p.description {
+	text-align: center;
+	margin-top: 0;
+	margin-bottom: 1.5rem;
+}
+
+.controls {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 1rem;
+	flex-wrap: wrap;
+}
+
+button {
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+	border-radius: 4px;
+	border: 1px solid #444;
+	background-color: #fff;
+	cursor: pointer;
+}
+
+button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.track-wrapper {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+#message {
+	text-align: center;
+	min-height: 1.5em;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+}
+
+.track {
+	display: grid;
+	grid-template-columns: repeat(70, 1.1fr);
+	gap: 1px;
+	padding: 8px;
+	background-color: #e2ded0;
+	border-radius: 6px;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+}
+
+.cell {
+	height: 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.1rem;
+	background-color: #fdfaf3;
+}
+
+.tortoise {
+	background-color: #3b873e;
+	/* color: #fff; */
+}
+
+.hare {
+	background-color: #f08c2e;
+	/* color: #fff; */
+}
+
+.both {
+	background-color: #c0392b;
+	/* color: #fff; */
+}
+
+#log {
+	max-width: 900px;
+	margin: 1rem auto 0;
+	padding: 0.5rem 0.75rem;
+	background-color: #fff;
+	border-radius: 6px;
+	border: 1px solid #ddd;
+	font-size: 0.85rem;
+	max-height: 50vh;
+	overflow-y: auto;
+}
+
+#log h2 {
+	margin: 0 0 0.25rem;
+	font-size: 1rem;
+}
+
+#log .entry {
+	font-family: monospace;
+}
