@@ -31,9 +31,21 @@ function startRace(){
 
 function raceStep(){
     stepCount++
+
+    let tortoiseBefore = tortoisePosition   // new
+    let hareBefore = harePosition           // new
+
     moveTortoise()
     moveHare()
     clampPosition()
+
+    // new block — build and push log entry
+    let tortoiseChange = tortoisePosition - tortoiseBefore
+    let hareChange = harePosition - hareBefore
+    let tortoiseDesc = describeTortoiseMove(tortoiseChange)
+    let hareDesc = describeHareMove(hareChange)
+    gameLog.push(`Turn ${stepCount}: 🐢 ${tortoiseDesc}, 🐇 ${hareDesc}`)
+
     renderTrack()
     renderLog()
 
@@ -73,6 +85,24 @@ function moveHare(){
     }
 }
 
+// new function
+function describeTortoiseMove(change){
+    if (change === 3)  return `steady plod (+3)`
+    if (change === -2) return `slipped (-2)`
+    if (change === 2)  return `fast plod (+2)`
+    return `moved ${change > 0 ? "+" : ""}${change}`
+}
+
+// new function
+function describeHareMove(change){
+    if (change === 0)  return `took a nap`
+    if (change === 6)  return `big hop (+6)`
+    if (change === -4) return `slipped (-4)`
+    if (change === 3)  return `regular plod (+3)`
+    if (change === 2)  return `small plod (+2)`
+    return `moved ${change > 0 ? "+" : ""}${change}`
+}
+
 function clampPosition(){
     tortoisePosition = Math.min(TRACK_LENGTH, Math.max(1, tortoisePosition))
     harePosition = Math.min(TRACK_LENGTH, Math.max(1, harePosition))
@@ -102,7 +132,6 @@ function renderTrack(){
     }
 }
 
-// new function
 function renderLog(){
     logListEl.innerHTML = ``
 
