@@ -32,14 +32,13 @@ function startRace(){
 function raceStep(){
     stepCount++
 
-    let tortoiseBefore = tortoisePosition   // new
-    let hareBefore = harePosition           // new
+    let tortoiseBefore = tortoisePosition
+    let hareBefore = harePosition
 
     moveTortoise()
     moveHare()
     clampPosition()
 
-    // new block — build and push log entry
     let tortoiseChange = tortoisePosition - tortoiseBefore
     let hareChange = harePosition - hareBefore
     let tortoiseDesc = describeTortoiseMove(tortoiseChange)
@@ -85,7 +84,6 @@ function moveHare(){
     }
 }
 
-// new function
 function describeTortoiseMove(change){
     if (change === 3)  return `steady plod (+3)`
     if (change === -2) return `slipped (-2)`
@@ -93,7 +91,6 @@ function describeTortoiseMove(change){
     return `moved ${change > 0 ? "+" : ""}${change}`
 }
 
-// new function
 function describeHareMove(change){
     if (change === 0)  return `took a nap`
     if (change === 6)  return `big hop (+6)`
